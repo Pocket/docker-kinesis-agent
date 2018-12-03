@@ -15,6 +15,11 @@ RUN apk add --no-cache shadow curl bash apache-ant \
     && cd amazon-kinesis-agent \
     && ./setup --build
 
+# Route aws-kinesis-agent.log to stdout
+RUN mkdir -p /var/log/aws-kinesis-agent \
+    && touch /var/log/aws-kinesis-agent/aws-kinesis-agent.log \
+    && ln -sfT /dev/stdout /var/log/aws-kinesis-agent/aws-kinesis-agent.log
+
 COPY agent.json /etc/aws-kinesis/agent.json
 COPY start.sh .
 CMD ["./start.sh"]
