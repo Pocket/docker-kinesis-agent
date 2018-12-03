@@ -1,0 +1,10 @@
+{
+  "cloudwatch.emitMetrics": true,
+  "flows": [
+    {
+      "filePattern": "/var/log/file.log*",
+      "deliveryStream": "stream-name",
+      "minTimeBetweenFilePollsMillis": 10000
+    }
+  ]
+}
