@@ -30,6 +30,8 @@ RUN mkdir -p /var/log/aws-kinesis-agent \
     && touch /var/log/aws-kinesis-agent/aws-kinesis-agent.log \
     && ln -sfT /dev/stdout /var/log/aws-kinesis-agent/aws-kinesis-agent.log
 
+RUN mv amazon-kinesis-agent/support/log4j.xml amazon-kinesis-agent/log4j2.xml
+
 COPY agent.json /etc/aws-kinesis/agent.json
 COPY start.sh .
 CMD ["./start.sh"]
