@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y software-properties-common \
 
 RUN apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main'
 
-RUN apt-get update && apt-get install --no-install-recommends -y curl ant openjdk-8-jdk \
+RUN apt-get update && apt-get install --no-install-recommends -y wget curl ant openjdk-8-jdk \
     && update-alternatives --set "java" /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java \
     && rm -rf /var/lib/apt/lists/*
 
