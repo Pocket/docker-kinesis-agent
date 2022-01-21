@@ -1,26 +1,14 @@
 ## Directions
 
+Image name: public.ecr.aws/pocket/kinesis-agent
+
 ### Build Image with Configuration
 
-Overwrite `/etc/aws-kinesis/agent.json` with configuration and run.
+Overwrite `/etc/aws-kinesis/agent.json` with configuration on run.
 
 Example:
-
-```dockerfile
-FROM pocket/kinesis-agent
-COPY agent.json /etc/aws-kinesis/agent.json
-```
-
-```bash
-$ docker build -n kinesis-agent . \
-    && docker run kinesis-agent
-```
-
-### Mount Configuration as Volume
-
-```bash
-$ docker build -n kinesis-agent . \
-    && docker run kinesis-agent -v /path/agent.json:/etc/aws-kinesis/agent.json kinesis-agent 
+```json
+command: ['-c', `echo ${kinesisConfig} | base64 -d - | tee /etc/kinesis-agent/agent.json`],
 ```
 
  
